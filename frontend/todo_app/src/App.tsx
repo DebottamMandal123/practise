@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { TodoItem } from "./components/TodoItem"
+import { TodoInput } from "./components/TodoInput"
 
 interface TodoProps {
     id: number,
@@ -8,11 +8,20 @@ interface TodoProps {
 }
 
 function App() {
-    const [todo, setTodos] = useState<TodoProps>();
+    const [, setTodos] = useState<TodoProps[]>([]);
+
+    const addTodo = (text: string) => {
+      const newTodo = {
+        id: Date.now(),
+        text,
+        completed: false
+      }
+      setTodos(prev => [...prev, newTodo])
+    }
 
   return (
     <div className="flex min-h-screen justify-center items-center">
-      <TodoItem />
+      <TodoInput onAddTodo={addTodo} />
     </div>
   )
 }
