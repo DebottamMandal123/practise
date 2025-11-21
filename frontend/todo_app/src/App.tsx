@@ -64,14 +64,16 @@ function App() {
 
   return (
     <div className="flex flex-col min-h-screen justify-center items-center gap-y-6">
+    <div className='flex gap-2 w-full max-w-md px-4'>
       <TodoInput onAddTodo={addTodo} />
-      <div className="flex flex-row justify-between items-center w-2xs">
-        <button className="cursor-pointer bg-black text-white rounded-md px-4 py-2" onClick={() => setFilter("all")}>All</button>
-        <button className="cursor-pointer bg-black text-white rounded-md px-4 py-2" onClick={() => setFilter("active")}>Active</button>
-        <button className="cursor-pointer bg-black text-white rounded-md px-4 py-2" onClick={() => setFilter("completed")}>Completed</button>
-      </div>
-      <TodoList todos={filteredTodos} onToggleTodo={toggleTodo} onDeleteTodo={deleteTodo} />
     </div>
+    <div className="flex flex-row justify-between items-center w-full max-w-md px-4">
+      <button className="cursor-pointer bg-black text-white rounded-md px-6 py-2" onClick={() => setFilter("all")}>All</button>
+      <button className="cursor-pointer bg-black text-white rounded-md px-6 py-2" onClick={() => setFilter("active")}>Active</button>
+      <button className="cursor-pointer bg-black text-white rounded-md px-6 py-2" onClick={() => setFilter("completed")}>Completed</button>
+    </div>
+    <TodoList todos={filteredTodos} onToggleTodo={toggleTodo} onDeleteTodo={deleteTodo} />
+  </div>
   )
 }
 

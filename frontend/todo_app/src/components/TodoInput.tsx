@@ -14,14 +14,19 @@ export const TodoInput: React.FC<AddtodoProps> = ({onAddTodo}) => {
   }
 
   return (
-    <div className='flex gap-2'>
+    <>
       <input 
         placeholder='Add a todo' 
-        className='text-lg border rounded-md px-2 py-1 w-2xs' 
+        className='text-lg border rounded-md px-2 py-1 flex-1' 
         value={todo}
         onChange={(e) => setTodo(e.target.value)}
+        onKeyDown={(e) => {
+          if (e.key == "Enter") {
+            addTodo();
+          }
+        }}
       /> 
-      <button className='bg-black text-white rounded-md px-2 cursor-pointer' onClick={addTodo}>Add Todo</button>
-    </div>
+      <button className='bg-black text-white rounded-md px-4 whitespace-nowrap cursor-pointer' onClick={addTodo}>Add Todo</button>
+    </>
   )
 }
